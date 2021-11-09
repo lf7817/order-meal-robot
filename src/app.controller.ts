@@ -5,7 +5,7 @@ import { ConfigService } from '@nestjs/config';
 export class AppController {
   constructor(private readonly config: ConfigService) {}
 
-  @Get()
+  @Get('webhooks')
   getHello(): string[] {
     return this.config.get('webhooks') || [];
   }
