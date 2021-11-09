@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GoodsConfgType } from 'src/config/goods.config';
+import { list } from './mock';
 import { WebhooksResponse } from './order-meal.interface';
 
 @Injectable()
@@ -12,15 +13,15 @@ export class OrderMealService {
   ) {}
 
   async pushOrderMealMessage() {
-    const list = await this.queryGoods();
+    // const list = await this.queryGoods();
     const config = this.configService.get('goods');
     const webhooks = this.configService
       .get('webhooks')
       .filter((item) => !!item);
 
-    if (!list || list.length === 0) {
-      return '菜单为空';
-    }
+    // if (!list || list.length === 0) {
+    //   return '菜单为空';
+    // }
 
     const spu = list[0];
     const skuList = spu.skuList;
