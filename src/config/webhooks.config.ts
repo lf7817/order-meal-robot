@@ -1,5 +1,7 @@
 import { registerAs } from '@nestjs/config';
 
-export const WebhooksConfig = registerAs('webhooks', (): string[] => {
+export type WebhooksConfigType = string[];
+
+export const WebhooksConfig = registerAs('webhooks', (): WebhooksConfigType => {
   return process.env.WEBHOOKS.split(';');
 });
