@@ -10,6 +10,11 @@ export class OrderMealController {
     return this.orderMealService.pushOrderMealMessage();
   }
 
+  @Get('/mock-push')
+  public async mockPush() {
+    return this.orderMealService.mockPushOrderMealMessage();
+  }
+
   @Get()
   public queryGoods() {
     return this.orderMealService.queryGoods();

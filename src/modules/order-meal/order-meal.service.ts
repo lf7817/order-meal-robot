@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GoodsConfgType } from 'src/config/goods.config';
-// import { list } from './mock';
+import { list as mockList } from './mock';
 import { WebhooksResponse } from './order-meal.interface';
 
 @Injectable()
@@ -21,6 +21,11 @@ export class OrderMealService {
       .get('webhooks')
       .filter((item) => !!item);
 
+    if (!webhooks || webhooks.length === 0) {
+      console.log('未添加webhooks');
+      return false;
+    }
+
     if (!list || list.length === 0) {
       console.log('菜单为空');
       return false;
@@ -29,6 +34,31 @@ export class OrderMealService {
     try {
       await Promise.all(
         webhooks.map((url) => this.push(url, this.getTemplate(list))),
+      );
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async mockPushOrderMealMessage() {
+    const webhooks = this.configService
+      .get('webhooks')
+      .filter((item) => !!item);
+
+    if (!webhooks || webhooks.length === 0) {
+      console.log('未添加webhooks');
+      return false;
+    }
+
+    if (!mockList || mockList.length === 0) {
+      console.log('菜单为空');
+      return false;
+    }
+
+    try {
+      await Promise.all(
+        webhooks.map((url) => this.push(url, this.getTemplate(mockList))),
       );
       return true;
     } catch (e) {
