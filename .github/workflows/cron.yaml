@@ -1,12 +1,12 @@
-name: order-meal-cron
+name: 15-minute-cron
 on:
   schedule:
-    - cron: '0 53 13,14 * *'
+    - cron: '*/15 * * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
-      - name: order-meal
+      - name: Call our API route
         run: |
           curl --request GET \
           --url 'https://order-meal-robot.vercel.app/order-meal/push'
