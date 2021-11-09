@@ -1,0 +1,12 @@
+name: order-meal
+on:
+  schedule:
+    - cron: '0 10 13,14 * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: order-meal
+        run: |
+          curl --request GET \
+          --url 'http://localhost/order-meal/push'
