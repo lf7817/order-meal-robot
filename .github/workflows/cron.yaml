@@ -9,4 +9,4 @@ jobs:
       - name: Call Push Api
         run: |
           curl --request GET \
-          --url 'https://order-meal-robot.vercel.app/order-meal'
+          --url 'https://order-meal-robot.vercel.app/order-meal/push'
