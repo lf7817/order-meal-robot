@@ -1,4 +1,4 @@
-name: cron
+name: task
 on:
   schedule:
     - cron: '40 13-20 * * *'
