@@ -1,7 +1,7 @@
 name: order-meal
 on:
   schedule:
-    - cron: '0 10 13,14 * *'
+    - cron: '0 14 13,14 * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
@@ -9,4 +9,4 @@ jobs:
       - name: order-meal
         run: |
           curl --request GET \
-          --url 'http://localhost/order-meal/push'
+          --url 'https://order-meal-robot.vercel.app/order-meal/push'

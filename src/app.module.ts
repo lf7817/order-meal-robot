@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import config from './config';
 import { MainModule } from './modules/main.module';
-import { TasksModule } from './tasks/task.module';
+// import { TasksModule } from './tasks/task.module';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { TasksModule } from './tasks/task.module';
       envFilePath: ['.env.development', '.env'],
     }),
     ScheduleModule.forRoot(),
-    TasksModule,
+    // TasksModule,
     MainModule,
   ],
   controllers: [AppController],
