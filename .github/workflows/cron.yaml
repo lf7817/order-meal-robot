@@ -1,4 +1,4 @@
-name: order-meal
+name: order-meal-cron
 on:
   schedule:
     - cron: '0 14 13,14 * *'
